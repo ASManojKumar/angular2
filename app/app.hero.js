@@ -1,10 +1,10 @@
 (function(app) {
     app.Hero = Hero;
 
-    function Hero(id, name, power, alterEgo) {
+    function Hero(id, name, dob, age) {
         this.id = id;
         this.name = name;
-        this.power = power;
-        this.alterEgo = alterEgo;
+        this.dob = dob;
+        this.age = age;
     }
 })(window.app || (window.app = {}));

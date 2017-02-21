@@ -6,9 +6,6 @@
         })
         .Class({
             constructor: [function() {
-                this.powers = ['Really Smart', 'Super Flexible',
-                    'Super Hot', 'Weather Changer'
-                ];
                 this.model = new app.Hero();
                 this.submitted = false;
             }],

@@ -4,7 +4,7 @@
             imports: [
                 ng.platformBrowser.BrowserModule,
                 ng.forms.FormsModule,
-                ng.MyDatePickerModule
+                mydatepicker.MyDatePickerModule
             ],
             declarations: [
                 app.AppComponent,
