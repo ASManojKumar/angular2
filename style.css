@@ -6,9 +6,12 @@ h1 {
 
 body {
     margin: 2em;
+    font-family: sans-serif;
+    font-size: small;
 }
 
-.form-group {
+.form-group,
+.row {
     margin: 10px;
 }
 

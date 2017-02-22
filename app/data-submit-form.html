@@ -1,6 +1,6 @@
 <div class="container">
     <div [hidden]="submitted">
-        <h2>Form Submission</h2>
+        <h2>Enter the details</h2>
         <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
             <div class="form-group">
                 <label for="name" class="form-input">Name</label>
@@ -22,24 +22,60 @@
                     Power is required
                 </div> -->
             </div>
-            <button type="submit" class="btn btn-default submit" [disabled]="!heroForm.form.valid">Submit</button>
+            <button type="submit" class="submit" [disabled]="!heroForm.form.valid">Submit</button>
         </form>
     </div>
     <div [hidden]="!submitted">
+        <form (ngSubmit)="secondSubmit()" #secondForm="ngForm">
+            <h2>Your Details:</h2>
+            <div class="row">
+                <div class="form-input">Name</div>
+                <div>{{ model.name }}</div>
+            </div>
+            <div class="row">
+                <div class="form-input">Age</div>
+                <div>{{ model.age }}</div>
+            </div>
+            <div class="row">
+                <div class="form-input">Date of Birth</div>
+                <div>{{ model.newDate | date : 'dd-MM-yyyy' }}</div>
+            </div>
+            <div class="row">
+                <label for="zipcode" class="form-input">Zipcode</label>
+                <input type="text" class="form-control" [(ngModel)]="model.zipcode" name="zipcode">
+            </div>
+            <div class="row">
+                <label for="city" class="form-input">City</label>
+                <select class="form-control" required [(ngModel)]="model.city" name="city" #city="ngModel">
+                    <option *ngFor="let city of cities" [value]="city">{{city}}</option>
+                </select>
+            </div>
+            <br>
+            <button class="submit" (click)="submitted=false">Edit</button>
+            <button type="submit" class="submit" [disabled]="!secondForm.form.valid">Submit</button>
+        </form>
+    </div>
+    <div [hidden]="!secondSubmitted">
         <h2>You submitted the following:</h2>
         <div class="row">
-            <div class="col-xs-3" class="form-input">Name</div>
-            <div class="col-xs-9 pull-left">{{ model.name }}</div>
+            <div class="form-input">Name</div>
+            <div>{{ model.name }}</div>
         </div>
         <div class="row">
-            <div class="col-xs-3" class="form-input">Age</div>
-            <div class="col-xs-9 pull-left">{{ model.age }}</div>
+            <div class="form-input">Age</div>
+            <div>{{ model.age }}</div>
         </div>
         <div class="row">
-            <div class="col-xs-3" class="form-input">Date of Birth</div>
-            <div class="col-xs-9 pull-left">{{ model.dob }}</div>
+            <div class="form-input">Date of Birth</div>
+            <div>{{ model.newDate | date : 'dd-MM-yyyy' }}</div>
         </div>
-        <br>
-        <button class="btn btn-default" (click)="submitted=false">Edit</button>
+        <div class="row">
+            <label for="zipcode" class="form-input">Zipcode</label>
+            <div>{{ model.zipcode }}</div>
+        </div>
+        <div class="row">
+            <label for="city" class="form-input">City</label>
+            <div>{{ model.city }}</div>
+        </div>
     </div>
 </div>

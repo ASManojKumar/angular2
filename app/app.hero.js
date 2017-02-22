@@ -1,8 +1,17 @@
 (function(app) {
     app.Hero = Hero;
 
-    function Hero(id, name, dob, age) {
-        this.id = id;
+    app.Hero1 = Hero1;
+
+    function Hero(name, dob, age, zipcode, city) {
+        this.name = name;
+        this.dob = dob;
+        this.age = age;
+        this.city = city;
+        this.zipcode = zipcode;
+    }
+
+    function Hero1(name, dob, age) {
         this.name = name;
         this.dob = dob;
         this.age = age;
