@@ -10,6 +10,9 @@
                 this.submitted = false;
                 this.secondSubmitted = false;
             }],
+            onEdit: function() {
+                this.editSaved = true;
+            },
             onSubmit: function() {
                 this.submitted = true;
                 this.model.newDate = this.model.dob.formatted;

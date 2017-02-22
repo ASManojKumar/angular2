@@ -11,7 +11,7 @@
             </div>
             <div class="form-group">
                 <label for="age" class="form-input">Age</label>
-                <input type="text" class="form-control" [(ngModel)]="model.age" name="age">
+                <input type="text" class="form-control" required [(ngModel)]="model.age" name="age">
             </div>
             <div class="form-group">
                 <label for="power" class="form-input">Date of birth</label>
@@ -30,11 +30,13 @@
             <h2>Your Details:</h2>
             <div class="row">
                 <div class="form-input">Name</div>
-                <div>{{ model.name }}</div>
+                <div [hidden]="editSaved">{{ model.name }}</div>
+                <input type="text" class="form-control" required [(ngModel)]="model.name" name="name" #name="ngModel" [hidden]="!editSaved">
             </div>
             <div class="row">
                 <div class="form-input">Age</div>
-                <div>{{ model.age }}</div>
+                <div [hidden]="editSaved">{{ model.age }}</div>
+                <input type="text" class="form-control" required [(ngModel)]="model.age" name="age" [hidden]="!editSaved">
             </div>
             <div class="row">
                 <div class="form-input">Date of Birth</div>
@@ -42,7 +44,7 @@
             </div>
             <div class="row">
                 <label for="zipcode" class="form-input">Zipcode</label>
-                <input type="text" class="form-control" [(ngModel)]="model.zipcode" name="zipcode">
+                <input type="text" class="form-control" required [(ngModel)]="model.zipcode" name="zipcode">
             </div>
             <div class="row">
                 <label for="city" class="form-input">City</label>
@@ -51,7 +53,7 @@
                 </select>
             </div>
             <br>
-            <button class="submit" (click)="submitted=false">Edit</button>
+            <input class="submit" (click)="onEdit()" value="Edit">
             <button type="submit" class="submit" [disabled]="!secondForm.form.valid">Submit</button>
         </form>
     </div>
