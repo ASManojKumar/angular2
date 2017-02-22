@@ -3,44 +3,40 @@
         <h2>Form Submission</h2>
         <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
             <div class="form-group">
-                <label for="name">Name</label>
+                <label for="name" class="form-input">Name</label>
                 <input type="text" class="form-control" required [(ngModel)]="model.name" name="name" #name="ngModel">
                 <!-- <div [hidden]="name.valid" class="alert alert-danger">
                     Name is required
                 </div> -->
             </div>
             <div class="form-group">
-                <label for="age">Age</label>
+                <label for="age" class="form-input">Age</label>
                 <input type="text" class="form-control" [(ngModel)]="model.age" name="age">
             </div>
             <div class="form-group">
-                <label for="power">Date of birth :</label>
-                <!-- <select class="form-control" required [(ngModel)]="model.power" name="power" #power="ngModel">
-                    <option *ngFor="let p of powers" [value]="p">{{p}}</option>
-                </select> -->
-
-                <form #myForm="ngForm" novalidate>
+                <label for="power" class="form-input">Date of birth</label>
+                <form #myForm="ngForm" novalidate class="dob-form">
                     <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="model.dob" required></my-date-picker>
                 </form>
                 <!-- <div [hidden]="power.valid" class="alert alert-danger">
                     Power is required
                 </div> -->
             </div>
-            <button type="submit" class="btn btn-default" [disabled]="!heroForm.form.valid">Submit</button>
+            <button type="submit" class="btn btn-default submit" [disabled]="!heroForm.form.valid">Submit</button>
         </form>
     </div>
     <div [hidden]="!submitted">
         <h2>You submitted the following:</h2>
         <div class="row">
-            <div class="col-xs-3">Name</div>
+            <div class="col-xs-3" class="form-input">Name</div>
             <div class="col-xs-9 pull-left">{{ model.name }}</div>
         </div>
         <div class="row">
-            <div class="col-xs-3">Age</div>
+            <div class="col-xs-3" class="form-input">Age</div>
             <div class="col-xs-9 pull-left">{{ model.age }}</div>
         </div>
         <div class="row">
-            <div class="col-xs-3">Date of Birth</div>
+            <div class="col-xs-3" class="form-input">Date of Birth</div>
             <div class="col-xs-9 pull-left">{{ model.dob }}</div>
         </div>
         <br>
