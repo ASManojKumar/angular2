@@ -37,6 +37,12 @@ body {
     float: left;
 }
 
+span a.submit {
+    display: inline-block;
+    text-align: center;
+    padding: 0px;
+}
+
 .submit {
     cursor: pointer;
     letter-spacing: 1.4px;

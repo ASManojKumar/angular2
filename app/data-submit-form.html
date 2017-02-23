@@ -53,7 +53,9 @@
                 </select>
             </div>
             <br>
-            <input class="submit" (click)="onEdit()" value="Edit">
+            <span>
+                <a class="submit" (click)="onEdit()">Edit</a>
+            </span>
             <button type="submit" class="submit" [disabled]="!secondForm.form.valid">Submit</button>
         </form>
     </div>
