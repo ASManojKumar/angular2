@@ -1,5 +1,5 @@
 <div class="container">
-    <div [hidden]="submitted">
+    <div [hidden]="submitted || secondSubmitted">
         <h2>Enter the details</h2>
         <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
             <div class="form-group">
@@ -16,27 +16,27 @@
             <div class="form-group">
                 <label for="power" class="form-input">Date of birth</label>
                 <form #myForm="ngForm" novalidate class="dob-form">
-                    <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="model.dob" required></my-date-picker>
+                    <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="model.dob"></my-date-picker>
                 </form>
                 <!-- <div [hidden]="power.valid" class="alert alert-danger">
                     Power is required
                 </div> -->
             </div>
-            <button type="submit" class="submit" [disabled]="!heroForm.form.valid">Submit</button>
+            <button type="submit" class="submit" [disabled]="!heroForm.form.valid && !myForm.form.valid">Submit</button>
         </form>
     </div>
-    <div [hidden]="!submitted">
-        <form (ngSubmit)="secondSubmit()" #secondForm="ngForm">
+    <div [hidden]="!submitted || secondSubmitted">
+        <form (ngSubmit)="secondSubmit()">
             <h2>Your Details:</h2>
             <div class="row">
                 <div class="form-input">Name</div>
                 <div [hidden]="editSaved">{{ model.name }}</div>
-                <input type="text" class="form-control" required [(ngModel)]="model.name" name="name" #name="ngModel" [hidden]="!editSaved">
+                <input type="text" class="form-control" required [(ngModel)]="updatedModel.name" name="name" #name="ngModel" [hidden]="!editSaved">
             </div>
             <div class="row">
                 <div class="form-input">Age</div>
                 <div [hidden]="editSaved">{{ model.age }}</div>
-                <input type="text" class="form-control" required [(ngModel)]="model.age" name="age" [hidden]="!editSaved">
+                <input type="text" class="form-control" required [(ngModel)]="updatedModel.age" name="age" [hidden]="!editSaved">
             </div>
             <div class="row">
                 <div class="form-input">Date of Birth</div>
@@ -44,11 +44,11 @@
             </div>
             <div class="row">
                 <label for="zipcode" class="form-input">Zipcode</label>
-                <input type="text" class="form-control" required [(ngModel)]="model.zipcode" name="zipcode" minlength="6" maxlength="6" pattern="/^\d{3}\s?\d{3}$/">
+                <input type="text" class="form-control" required [(ngModel)]="updatedModel.zipcode" name="zipcode" minlength="6" maxlength="6">
             </div>
             <div class="row">
                 <label for="city" class="form-input">City</label>
-                <select class="form-control" required [(ngModel)]="model.city" name="city" #city="ngModel">
+                <select class="form-control" required [(ngModel)]="updatedModel.city" name="city" #city="ngModel">
                     <option *ngFor="let city of cities" [value]="city">{{city}}</option>
                 </select>
             </div>
@@ -56,18 +56,26 @@
             <span>
                 <a class="submit" (click)="onEdit()">Edit</a>
             </span>
-            <button type="submit" class="submit" [disabled]="!secondForm.form.valid">Submit</button>
+            <button type="submit" class="submit">Submit</button>
         </form>
     </div>
     <div [hidden]="!secondSubmitted">
         <h2>You submitted the following:</h2>
-        <div class="row">
+        <div class="row name">
             <div class="form-input">Name</div>
             <div>{{ model.name }}</div>
         </div>
-        <div class="row">
+        <div class="updated-name" [hidden]="model.name === updatedModel.name">
+            <div class="form-input">Updated Name</div>
+            <div>{{ updatedModel.name }}</div>
+        </div>
+        <div class="row age">
             <div class="form-input">Age</div>
             <div>{{ model.age }}</div>
+        </div>
+        <div class="updated-age" [hidden]="model.age === updatedModel.age">
+            <div class="form-input">Updated Age</div>
+            <div>{{ updatedModel.age }}</div>
         </div>
         <div class="row">
             <div class="form-input">Date of Birth</div>
@@ -75,11 +83,11 @@
         </div>
         <div class="row">
             <label for="zipcode" class="form-input">Zipcode</label>
-            <div>{{ model.zipcode }}</div>
+            <div>{{ updatedModel.zipcode }}</div>
         </div>
         <div class="row">
             <label for="city" class="form-input">City</label>
-            <div>{{ model.city }}</div>
+            <div>{{ updatedModel.city }}</div>
         </div>
     </div>
 </div>

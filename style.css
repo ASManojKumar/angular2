@@ -11,7 +11,9 @@ body {
 }
 
 .form-group,
-.row {
+.row, 
+.updated-name,
+.updated-age {
     margin: 10px;
 }
 
@@ -33,7 +35,7 @@ body {
 }
 
 .dob-form {
-    width: 11%;
+    width: 200px;
     float: left;
 }
 

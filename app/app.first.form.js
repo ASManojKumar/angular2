@@ -7,6 +7,7 @@
         .Class({
             constructor: [function() {
                 this.model = new app.Hero();
+                this.updatedModel = new app.Hero();
                 this.submitted = false;
                 this.secondSubmitted = false;
             }],
@@ -22,8 +23,5 @@
                 this.submitted = false;
                 this.secondSubmitted = true;
             },
-            secondConstructor: [function() {
-                this.secondModel = new app.Hero1();
-            }],
         });
 })(window.app || (window.app = {}));
