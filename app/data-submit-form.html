@@ -27,7 +27,10 @@
     </div>
     <div [hidden]="!submitted || secondSubmitted">
         <form (ngSubmit)="secondSubmit()">
-            <h2>Your Details:</h2>
+            <div class="float-form">
+                <h2>Your Details:</h2>
+                <div>Name : {{ model.name }}</div>
+            </div>
             <div class="row">
                 <div class="form-input">Name</div>
                 <div [hidden]="editSaved">{{ model.name }}</div>
@@ -60,7 +63,11 @@
         </form>
     </div>
     <div [hidden]="!secondSubmitted">
-        <h2>You submitted the following:</h2>
+        <!-- <h2>You submitted the following:</h2> -->
+        <div class="float-form">
+            <h2>Your Details:</h2>
+            <div>Name : {{ updatedModel.name }}</div>
+        </div>
         <div class="row name">
             <div class="form-input">Name</div>
             <div>{{ model.name }}</div>

@@ -11,7 +11,7 @@ body {
 }
 
 .form-group,
-.row, 
+.row,
 .updated-name,
 .updated-age {
     margin: 10px;
@@ -64,4 +64,22 @@ span a.submit {
     color: #80808f;
     border: 1px solid #80808f;
     cursor: default;
+}
+
+.float-form h2 {
+    float: left;
+    width: 10%;
+}
+
+.float-form div {
+    float: left;
+    width: 90%;
+    margin: 1.5em 0;
+    font-weight: bold;
+}
+
+.float-form:after {
+    display: block;
+    content: '';
+    clear: both;
 }
